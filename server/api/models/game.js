@@ -15,8 +15,10 @@ const gameSchema =mongoose.Schema({
     type:Number,
     required:true
   },
+  device: String,
   description: String,
   imageUrl:String,
+  
 });
 
 module.exports=mongoose.model('Games', gameSchema)
