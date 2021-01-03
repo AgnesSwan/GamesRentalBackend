@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 const gamesRoute = require('./api/routes/games');
+const orderRoute = require('./api/routes/orders');
 
 mongoose.connect(
 
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 
 
 app.use('/games', gamesRoute);
+app.use('/orders', orderRoute);
 
 app.use((req, res, next) => {
   const error = new Error('Nie odnaleziono');

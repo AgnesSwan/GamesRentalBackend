@@ -21,4 +21,4 @@ const gameSchema =mongoose.Schema({
   
 });
 
-module.exports=mongoose.model('Games', gameSchema)
+module.exports=mongoose.model('Game', gameSchema)
