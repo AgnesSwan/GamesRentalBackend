@@ -1,11 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const mongoose = require('mongoose');
 
 const app = express();
 const gamesRoute = require('./api/routes/games');
 const orderRoute = require('./api/routes/orders');
-
+app.use(cors());
 mongoose.connect(
 
   'mongodb+srv://ness:' +
