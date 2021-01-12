@@ -1,5 +1,7 @@
 # GamesRentalBackend
 
+The project is in progress.
+
 Used frameworks and solutions:
 1. Express
 npm i express --save
