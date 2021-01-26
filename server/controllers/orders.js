@@ -6,13 +6,13 @@ exports.orders_get_all = (req, res, next) => {
   Order.find()
     .then((orderList) => {
       res.status(200).json({
-        wiadomość: 'lista zamowienia',
+        wiadomość: 'lista rezerwacji',
         info: orderList,
       });
     })
     .catch((err) => res.status(500).json({ wiadomość: err }));
 };
-exports.orders_new = (req, res, next) => {  //kod do post
+exports.order_new = (req, res, next) => {  
   const order = new Order({
     _id: mongoose.Types.ObjectId(),
     quantity: req.body.quantity,
@@ -29,4 +29,16 @@ exports.orders_new = (req, res, next) => {  //kod do post
         error: err
       });
     });
+};
+
+exports.order_delete = (req, res, next) => {
+  const id = req.params.orderId;
+  Order.findByIdAndDelete(id)
+    .then((doc) => {
+      res.status(200).json({
+        wiadomość: 'Anulowano rezerwację o nr ' + id,
+        info: doc,
+      });
+    })
+    .catch((err) => res.status(500).json({ wiadomość: err }));
 };

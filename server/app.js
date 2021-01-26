@@ -6,6 +6,10 @@ const mongoose = require('mongoose');
 const app = express();
 const gamesRoute = require('./api/routes/games');
 const orderRoute = require('./api/routes/orders');
+const userRoute = require('./api/routes/users');
+
+app.use(bodyParser.json());
+
 app.use(cors());
 mongoose.connect(
 
@@ -14,17 +18,9 @@ mongoose.connect(
   '@syrenka.6l7qa.mongodb.net/shop?retryWrites=true&w=majority',
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
-
-
-
-//parsowanie body
-app.use(bodyParser.json());
-
-
-
-
 app.use('/games', gamesRoute);
 app.use('/orders', orderRoute);
+app.use('/users', userRoute);
 
 app.use((req, res, next) => {
   const error = new Error('Nie odnaleziono');
